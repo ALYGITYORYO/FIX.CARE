@@ -48,11 +48,9 @@ public class Login extends javax.swing.JFrame {
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fix/care/images/logo circulo.png"))); // NOI18N
         bg.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, -10, 290, 240));
 
         citybg.setBackground(new java.awt.Color(0, 134, 190));
-        citybg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fix/care/images/bg_4.jpg"))); // NOI18N
         bg.add(citybg, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 360, 500));
 
         header.setBackground(new java.awt.Color(255, 255, 255));
@@ -71,7 +69,6 @@ public class Login extends javax.swing.JFrame {
 
         exitTxt.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
         exitTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        exitTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fix/care/images/cerra_1.png"))); // NOI18N
         exitTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         exitTxt.setPreferredSize(new java.awt.Dimension(40, 40));
         exitTxt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,7 +126,6 @@ public class Login extends javax.swing.JFrame {
         userLabel.setText("USUARIO");
         bg.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtUsuario.setText("Ingrese su nombre de usuario");
         txtUsuario.setBorder(null);
@@ -149,7 +145,6 @@ public class Login extends javax.swing.JFrame {
         passLabel.setText("CONTRASEÑA");
         bg.add(passLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
-        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtPassword.setText("********");
         txtPassword.setBorder(null);
         txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
