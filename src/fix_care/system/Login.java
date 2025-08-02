@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import fix_care.clases.ConexionBD;
 import fix_care.clases.UsuarioBD;
 import fix_care.clases.Usuario;
+import fix_care.menu.Menu;
 
 public class Login extends javax.swing.JFrame {
     
@@ -266,14 +267,18 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordMousePressed
 
     private void loginBtnTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnTxtMouseClicked
-          Usuario  objUsuario = new Usuario();
+        Usuario  objUsuario = new Usuario();
         objUsuario.setUsuario( txtUsuario.getText());
         objUsuario.setPassword( new String(txtPassword.getPassword()));
 
         //validando al usuario contra la base de datos
         if (this.validarUsuario(objUsuario)) {
             //si el usuario es valido
-            JOptionPane.showMessageDialog(this, "Bienvenido " + objUsuario.getUsuario());
+            //JOptionPane.showMessageDialog(this, "Bienvenido " + objUsuario.getUsuario());
+            Dashboard dashboard =new Dashboard();                           
+            dashboard.setUsuario(objUsuario);
+            dashboard.show();
+        
             // Se oculta esta ventana
             this.setVisible(false);
             //Se construye el objeto de la nueva ventana
