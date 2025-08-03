@@ -1,38 +1,87 @@
 package fix_care.clases;
 
 public class Usuario {
-    private int idUsuario;
+
+    private String nombre;
+    private String apepat;
+    private String apemat;   
+    private String correo;
+    private int rol;
+    private String telefono;
     private String usuario;
     private String password;
-    private String email;
-    private String rol;
-    
-    public Usuario(String usuario, String password, String email, String rol){
-          this.idUsuario = 0;
-        this.usuario=usuario;
-        this.password =password;
-        this.email = email;
-        this.rol = rol;
-    }
 
-     public Usuario(){
-        this.idUsuario = 0;
-        this.usuario="";
-        this.password ="";
-        this.email = "";
-        this.rol = "";
-     }
-    
-    // Constructor
-    public Usuario(int idUsuario, String usuario, String password, String email, String rol) {
-        this.idUsuario = idUsuario;
-        this.usuario=usuario;
+    public Usuario(){}
+    public Usuario( String nombre, String apepat, String apemat, String correo, int rol, String telefono, String usuario, String password) {
+        
+        this.nombre = nombre;
+        this.apepat = apepat;
+        this.apemat = apemat;
+        this.correo = correo;
+        this.rol = rol;
+        this.telefono = telefono;
+        this.usuario = usuario;
         this.password = password;
-        this.email = email;
+    }
+    
+    private int idUsuario;    
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApepat() {
+        return apepat;
+    }
+
+    public void setApepat(String apepat) {
+        this.apepat = apepat;
+    }
+
+    public String getApemat() {
+        return apemat;
+    }
+
+    public void setApemat(String apemat) {
+        this.apemat = apemat;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public int getRol() {
+        return rol;
+    }
+
+    public void setRol(int rol) {
         this.rol = rol;
     }
 
-    //Setters  
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     public String getUsuario() {
         return usuario;
     }
@@ -41,37 +90,13 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    // Getters
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getRol() {
-        return rol;
-    }
+  
 
 }

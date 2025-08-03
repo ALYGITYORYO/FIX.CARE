@@ -10,16 +10,23 @@ import java.sql.Statement;
 
 public class UsuarioBD {
 
-    public int insertarUsuario(Connection conn, Usuario usuario) throws SQLException {
-        String sql = "INSERT INTO usuario (usuario, password, email, rol) VALUES (?, ?, ?, ?)";  //se arma la sentencia de la consulta con parametros
-        //  Statement.RETURN_GENERATED_KEYS --> constante que  regresa el id generado despues de insertar
+      public int insertUser(Connection conn, Usuario usuario) throws SQLException {
+        String sql = "INSERT INTO `usuario`(`NOMBRE`, `APEPAT`, `APEMAT`,`IMG`, `CORREO`,`TELEFONO`, `ROL`, `USER`, `PASSWORD`) VALUES (?,?,?,?,?,?,?,?,?)";
+        System.out.println(sql);
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setString(1, usuario.getUsuario());    // Se establecen los parametros 
-            stmt.setString(2, usuario.getPassword());
-            stmt.setString(3, usuario.getEmail());
-            stmt.setString(4, usuario.getRol());
+            
+            stmt.setString(1, usuario.getNombre());    
+            stmt.setString(2, usuario.getApepat());    
+            stmt.setString(3, usuario.getApemat());
+            stmt.setString(4, "img.jpg");     
+            stmt.setString(5, usuario.getCorreo());     
+            stmt.setString(6, usuario.getTelefono());
+            stmt.setInt(7, usuario.getRol());
+            stmt.setString(8, usuario.getUsuario());
+            stmt.setString(9, usuario.getPassword());
+            
             int filas = stmt.executeUpdate();
-
+            System.out.println(filas);
             if (filas > 0) {
                 try (ResultSet rs = stmt.getGeneratedKeys()) {// se obteniene el idGenerado
                     if (rs.next()) {
@@ -66,8 +73,8 @@ public class UsuarioBD {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {  //se prepara la sentencia SQL mediante la variable statement--> stmt
             stmt.setString(1, usuario.getUsuario()); // Se establecen los parametros 
             stmt.setString(2, usuario.getPassword());
-            stmt.setString(3, usuario.getEmail());
-            stmt.setString(4, usuario.getRol());
+            //stmt.setString(3, usuario.getEmail());
+           // stmt.setString(4, usuario.getRol());
             stmt.setInt(5, idUsuario);
             return stmt.executeUpdate() > 0;  //se ejecuta la consulta y se recibe en el result set --> rs
         }
@@ -76,7 +83,7 @@ public class UsuarioBD {
     public ResultSet consultarUsuarioLogin(Connection conn, String usuario, String password) throws SQLException {
         ResultSet rs;
         PreparedStatement stmt;        
-        String sql = "SELECT * from usuario WHERE usuario = ? AND password = ?";   //se arma la sentencia de la consulta        
+        String sql = "SELECT * from usuario WHERE USER = ? AND PASSWORD = ?";   //se arma la sentencia de la consulta        
         stmt = conn.prepareStatement(sql);//se prepara la sentencia SQL mediante la variable statement--> stmt
         stmt.setString(1, usuario);       //se establecen los campos de consulta
         stmt.setString(2, password);

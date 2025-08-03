@@ -10,7 +10,8 @@ import javax.swing.JOptionPane;
 import fix_care.clases.ConexionBD;
 import fix_care.clases.UsuarioBD;
 import fix_care.clases.Usuario;
-import fix_care.menu.Menu;
+import fix_care.system.Dashboard;
+import fix_care.system.Dashboard;
 
 public class Login extends javax.swing.JFrame {
     
@@ -49,11 +50,11 @@ public class Login extends javax.swing.JFrame {
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fix/care/images/logo circulo.png"))); // NOI18N
-        bg.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, -10, 290, 240));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fix/care/images/logo_circulo.png"))); // NOI18N
+        bg.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 230, 180));
 
         citybg.setBackground(new java.awt.Color(0, 134, 190));
-        citybg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fix/care/images/bg_4.jpg"))); // NOI18N
+        citybg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fix/care/images/bg1.jpg"))); // NOI18N
         bg.add(citybg, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 360, 500));
 
         header.setBackground(new java.awt.Color(255, 255, 255));
@@ -72,7 +73,6 @@ public class Login extends javax.swing.JFrame {
 
         exitTxt.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
         exitTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        exitTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fix/care/images/cerra_1.png"))); // NOI18N
         exitTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         exitTxt.setPreferredSize(new java.awt.Dimension(40, 40));
         exitTxt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,7 +130,6 @@ public class Login extends javax.swing.JFrame {
         userLabel.setText("USUARIO");
         bg.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txtUsuario.setText("Ingrese su nombre de usuario");
         txtUsuario.setBorder(null);
@@ -150,12 +149,16 @@ public class Login extends javax.swing.JFrame {
         passLabel.setText("CONTRASEÑA");
         bg.add(passLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
-        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtPassword.setText("********");
         txtPassword.setBorder(null);
         txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtPasswordMousePressed(evt);
+            }
+        });
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
             }
         });
         bg.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 410, 30));
@@ -164,7 +167,7 @@ public class Login extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(26, 104, 177));
         bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 410, 20));
 
-        loginBtn.setBackground(new java.awt.Color(26, 104, 177));
+        loginBtn.setBackground(new java.awt.Color(8, 55, 116));
 
         loginBtnTxt.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         loginBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,11 +240,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_exitTxtMouseExited
 
     private void loginBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnTxtMouseEntered
-        loginBtn.setBackground(new Color(0, 156, 223));
+        loginBtn.setBackground(new Color(33,161,153));
     }//GEN-LAST:event_loginBtnTxtMouseEntered
 
     private void loginBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnTxtMouseExited
-        loginBtn.setBackground(new Color(0,134,190));
+        loginBtn.setBackground(new Color(8, 55, 116));
     }//GEN-LAST:event_loginBtnTxtMouseExited
 
     private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
@@ -270,16 +273,15 @@ public class Login extends javax.swing.JFrame {
         Usuario  objUsuario = new Usuario();
         objUsuario.setUsuario( txtUsuario.getText());
         objUsuario.setPassword( new String(txtPassword.getPassword()));
-
+       
         //validando al usuario contra la base de datos
         if (this.validarUsuario(objUsuario)) {
             //si el usuario es valido
-            //JOptionPane.showMessageDialog(this, "Bienvenido " + objUsuario.getUsuario());
-            Dashboard dashboard =new Dashboard();                           
-            dashboard.setUsuario(objUsuario);
-            dashboard.show();
-        
+            JOptionPane.showMessageDialog(this, "Bienvenido " + objUsuario.getUsuario());
             // Se oculta esta ventana
+            Dashboard dash = new Dashboard();
+            dash.setUsuario(objUsuario); //Inicializamos el objeto dashboard y le asignamos el objeto usuario 
+            dash.show();
             this.setVisible(false);
             //Se construye el objeto de la nueva ventana
             //frmMenuPrincipal menuPrincipal = new frmMenuPrincipal();
@@ -291,6 +293,10 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
         }
     }//GEN-LAST:event_loginBtnTxtMouseClicked
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code  here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     public boolean validarUsuario(Usuario objUsuario){
       //variables de clase 

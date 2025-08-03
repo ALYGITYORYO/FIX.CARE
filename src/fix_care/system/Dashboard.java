@@ -5,6 +5,7 @@ import fix_care.form.Form_Dashboard;
 import fix_care.form.Form_Empty;
 import fix_care.menu.EventMenuSelected;
 import fix_care.clases.Usuario;
+import fix_care.form.Alta_Usuario;
 import fix_care.menu.*;
 
 public class Dashboard extends javax.swing.JFrame {
@@ -29,8 +30,14 @@ public class Dashboard extends javax.swing.JFrame {
             public void menuSelected(int index, int indexSubMenu) {
                 if (index == 0 && indexSubMenu == 0) {
                     showForm(new Form_Dashboard());
-                } else {
-                    showForm(new Form_Empty(index + " " + indexSubMenu));
+                }  else {
+                    if (index ==1 && indexSubMenu == 1){
+                    showForm(new Alta_Usuario());                    
+                    }
+                    else{
+                       showForm(new Form_Empty(index + " " + indexSubMenu));
+                    }
+                 
                 }
             }
         });

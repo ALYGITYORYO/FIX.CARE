@@ -13,7 +13,7 @@ public class ConexionBD {
 
 
 public ConexionBD(){    
-    url="jdbc:mysql://localhost:3306/cafeteriautm3a";
+    url="jdbc:mysql://localhost:3306/fix_care";
     user="root";
     password="";
     conn=null;
