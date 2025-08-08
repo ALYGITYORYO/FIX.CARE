@@ -541,19 +541,20 @@ if (txtPassword.getText().equals("Ingresa la contraseña")) {
         String pass =txtPassword.getText();        
         String usuario=txtUsuario.getText();  
         int rol=cmbRol.getSelectedIndex();
+        String roltxt="";
         System.out.println(rol);
         switch (rol) {
             case 0:
-            rol=1;    
+            roltxt="Admininstrador";    
             break;
             case 1:
-            rol=2; 
+            roltxt="Técnico";    
             break;
             case 2:
-            rol=3;    
+            roltxt="Docente";       
             break;
             default:
-            rol=0;    
+            roltxt="Error";       
         }
         if(!pass.equals(new String(txtPassword2.getPassword())))
         {
@@ -561,7 +562,7 @@ if (txtPassword.getText().equals("Ingresa la contraseña")) {
         txtPassword2.setText("");
         }
         else{
-         Usuario  objUsuario = new Usuario(nombre, apepat, apemat, correo, rol, telefono, usuario, pass);
+         Usuario  objUsuario = new Usuario(nombre, apepat, apemat, correo, roltxt, telefono, usuario, pass);
          if(this.insertarUsuario(objUsuario)){
          }
         }
@@ -581,7 +582,7 @@ if (txtPassword.getText().equals("Ingresa la contraseña")) {
             ConexionBD   objetoConexionBD = new ConexionBD();
             conn=  objetoConexionBD.conexionDataBase();                
             UsuarioBD bd = new UsuarioBD();
-                 int idGenerado = bd.insertUser(conn,user);
+            int idGenerado = bd.insertUser(conn,user);
                  
              if (idGenerado>=1) {  //encontro al menos 1 registro con los datos
                 //accedemos al sistema

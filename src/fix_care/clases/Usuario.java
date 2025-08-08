@@ -6,13 +6,13 @@ public class Usuario {
     private String apepat;
     private String apemat;   
     private String correo;
-    private int rol;
+    private String rol;
     private String telefono;
     private String usuario;
     private String password;
 
     public Usuario(){}
-    public Usuario( String nombre, String apepat, String apemat, String correo, int rol, String telefono, String usuario, String password) {
+    public Usuario( String nombre, String apepat, String apemat, String correo, String  rol, String telefono, String usuario, String password) {
         
         this.nombre = nombre;
         this.apepat = apepat;
@@ -66,11 +66,11 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public int getRol() {
+    public String getRol() {
         return rol;
     }
 
-    public void setRol(int rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
 

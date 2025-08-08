@@ -21,7 +21,7 @@ public class UsuarioBD {
             stmt.setString(4, "img.jpg");     
             stmt.setString(5, usuario.getCorreo());     
             stmt.setString(6, usuario.getTelefono());
-            stmt.setInt(7, usuario.getRol());
+            stmt.setString(7, usuario.getRol());
             stmt.setString(8, usuario.getUsuario());
             stmt.setString(9, usuario.getPassword());
             
